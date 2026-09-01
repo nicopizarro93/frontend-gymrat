@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="es" data-bs-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Detalle del ejercicio | GymRat</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="gr-dark-section">
+
+  <nav class="navbar navbar-expand-lg gr-light-navbar sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">GYM<span>RAT</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navGymrat" aria-controls="navGymrat" aria-expanded="false" aria-label="Abrir menú">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navGymrat">
+        <ul class="navbar-nav mx-auto text-center">
+          <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link active" href="ejercicios.html">Ejercicios</a></li>
+          <li class="nav-item"><a class="nav-link" href="mis-rutinas.html">Mis rutinas</a></li>
+          <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+          <li class="nav-item"><a class="nav-link" href="nosotros.html">Nosotros</a></li>
+          <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+        </ul>
+        <div class="d-flex gap-2 justify-content-center" id="navAuthArea">
+          <a href="login.html" class="btn btn-brand-outline btn-sm">Iniciar sesión</a>
+          <a href="registro.html" class="btn btn-brand btn-sm">Únete ahora</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <section class="py-5" style="background-color:var(--gr-light-bg);min-height:70vh;">
+    <div class="container">
+      <a href="ejercicios.html" class="text-brand-red small"><i class="bi bi-arrow-left"></i> Volver al catálogo</a>
+
+      <div id="detalleEjercicio" class="mt-4"></div>
+      <div id="noEncontrado" class="alert alert-warning d-none mt-4">No encontramos ese ejercicio. <a href="ejercicios.html">Vuelve al catálogo</a>.</div>
+
+      <div class="mt-5">
+        <h2 class="h5 gr-section-title mb-4">Ejercicios del mismo grupo muscular</h2>
+        <div class="row g-4" id="listaRelacionados"></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="gr-footer pt-5 pb-4">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-md-4">
+          <a href="index.html" class="navbar-brand d-inline-block mb-2" style="color:#fff;">GYM<span class="text-brand-red">RAT</span></a>
+          <p class="small">Entrena con datos, no con suposiciones. Proyecto académico DUOC UC — DSY1104.</p>
+        </div>
+        <div class="col-6 col-md-4">
+          <h6 style="font-family:var(--font-display);letter-spacing:.05em;">Navegación</h6>
+          <ul class="list-unstyled small">
+            <li class="mb-2"><a href="nosotros.html">Nosotros</a></li>
+            <li class="mb-2"><a href="ejercicios.html">Ejercicios</a></li>
+            <li class="mb-2"><a href="blog.html">Blog</a></li>
+            <li class="mb-2"><a href="contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md-4">
+          <h6 style="font-family:var(--font-display);letter-spacing:.05em;">Legal</h6>
+          <ul class="list-unstyled small">
+            <li class="mb-2"><a href="privacidad.html">Política de privacidad (Ley 21.719)</a></li>
+            <li class="mb-2"><a href="login.html">Iniciar sesión</a></li>
+            <li class="mb-2"><a href="registro.html">Crear cuenta</a></li>
+          </ul>
+        </div>
+      </div>
+      <hr class="border-secondary my-4">
+      <p class="small text-center mb-0">&copy; 2026 GymRat. Proyecto estudiantil, no representa un servicio comercial real.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/mock-data.js"></script>
+  <script src="js/sesion-ui.js"></script>
+  <script src="js/ejercicio-detalle.js"></script>
+</body>
+</html>

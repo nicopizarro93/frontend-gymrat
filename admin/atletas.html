@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="es" data-bs-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Atletas | Panel Admin GymRat</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body class="gr-dark-section">
+  <div class="gr-admin-shell d-flex">
+    <aside class="gr-admin-sidebar p-3" style="width:240px;flex-shrink:0;">
+      <a href="../index.html" class="brand d-inline-block mb-4">GYM<span>RAT</span></a>
+      <nav class="nav flex-column">
+        <a class="nav-link" href="index.html"><i class="bi bi-speedometer2 me-2"></i>Dashboard</a>
+        <a class="nav-link" href="ejercicios.html"><i class="bi bi-lightning-charge me-2"></i>Ejercicios</a>
+        <a class="nav-link active" href="atletas.html"><i class="bi bi-people me-2"></i>Atletas</a>
+        <a class="nav-link" href="../perfil.html"><i class="bi bi-person me-2"></i>Mi perfil</a>
+        <a class="nav-link" href="../index.html"><i class="bi bi-box-arrow-left me-2"></i>Volver al sitio</a>
+        <button type="button" class="nav-link border-0 bg-transparent text-start w-100" id="btnCerrarSesionAdmin">
+          <i class="bi bi-power me-2"></i>Cerrar sesión
+        </button>
+      </nav>
+    </aside>
+
+    <main class="flex-grow-1 p-4 p-md-5">
+      <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+        <div>
+          <h1 class="h3 mb-0">Mantenedor de atletas</h1>
+          <p class="text-muted mb-0">Administra las cuentas registradas y sus roles.</p>
+        </div>
+        <button type="button" class="btn btn-brand" data-bs-toggle="modal" data-bs-target="#modalAtleta" id="btnNuevoAtleta">
+          <i class="bi bi-plus-lg"></i> Nuevo atleta
+        </button>
+      </div>
+
+      <div class="card gr-card p-3 p-md-4">
+        <div class="table-responsive">
+          <table class="table table-gr align-middle mb-0">
+            <thead>
+              <tr>
+                <th>RUT</th><th>Nombre</th><th>Correo</th><th>Rol</th><th class="text-end">Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="tablaAtletas"></tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Modal crear/editar atleta -->
+  <div class="modal fade" id="modalAtleta" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form id="formAtleta" novalidate>
+          <div class="modal-header">
+            <h5 class="modal-title" id="tituloModalAtleta">Nuevo atleta</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+          </div>
+          <div class="modal-body">
+            <input type="hidden" id="idAtleta" name="idAtleta">
+            <div class="mb-3">
+              <label for="rutAtleta" class="form-label">RUT</label>
+              <input type="text" class="form-control" id="rutAtleta" name="rutAtleta" placeholder="12345678-9" maxlength="10" required>
+            </div>
+            <div class="mb-3">
+              <label for="nombreAtleta" class="form-label">Nombre completo</label>
+              <input type="text" class="form-control" id="nombreAtleta" name="nombreAtleta" required>
+            </div>
+            <div class="mb-3">
+              <label for="emailAtleta" class="form-label">Correo electrónico</label>
+              <input type="email" class="form-control" id="emailAtleta" name="emailAtleta" required>
+            </div>
+            <div class="mb-3">
+              <label for="rolAtleta" class="form-label">Rol</label>
+              <select class="form-select" id="rolAtleta" name="rolAtleta" required>
+                <option value="MIEMBRO">Miembro</option>
+                <option value="STAFF">Staff (administrador)</option>
+              </select>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-brand">Guardar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/mock-data.js"></script>
+  <script src="../js/validaciones.js"></script>
+  <script src="../js/admin-atletas.js"></script>
+</body>
+</html>

@@ -644,3 +644,29 @@ dl dt { font-weight: 600; }
   border-color: var(--gr-red);
   color: #fff;
 }
+
+/* =========================================================
+   Gif de demostracion en el detalle de un ejercicio
+   (ejercicio-detalle.html) - ver gifUrl en mock-data.js
+   ========================================================= */
+.gr-ejercicio-media {
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background-color: var(--gr-surface-dark);
+  border: 1px solid var(--gr-light-border);
+}
+.gr-ejercicio-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.gr-ejercicio-media-vacia {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1.5rem;
+}

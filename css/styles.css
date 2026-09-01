@@ -445,3 +445,202 @@ dl dt { font-weight: 600; }
 @media (max-width: 767.98px) {
   .gr-auth-side { text-align: center; margin-bottom: 2rem; }
 }
+
+
+/* =========================================================
+   Ejecucion de rutina (ejecutar-rutina.html)
+   ========================================================= */
+.gr-progress-track .progress-bar {
+  background-color: var(--gr-accent);
+}
+.gr-exercise-row {
+  background-color: var(--gr-light-surface);
+  border: 1px solid var(--gr-light-border);
+  border-left: 4px solid var(--gr-light-border);
+  border-radius: var(--radius-md);
+  transition: border-color .2s ease, background-color .2s ease;
+}
+.gr-exercise-row.is-activo {
+  border-left-color: var(--gr-red);
+  background-color: var(--gr-surface-dark);
+}
+.gr-exercise-row.is-completado {
+  border-left-color: var(--gr-accent);
+  opacity: .82;
+}
+.gr-exercise-head {
+  cursor: pointer;
+}
+.gr-set-dot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.9rem;
+  height: 1.9rem;
+  border-radius: 50%;
+  border: 2px solid var(--gr-light-border);
+  color: var(--gr-gray-300);
+  font-size: .8rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.gr-set-dot.is-hecha {
+  background-color: var(--gr-accent);
+  border-color: var(--gr-accent);
+  color: var(--gr-black);
+}
+.gr-set-dot.is-actual {
+  border-color: var(--gr-red);
+  color: var(--gr-white);
+}
+.gr-timer-display {
+  font-family: var(--font-display);
+  font-size: 3.2rem;
+  letter-spacing: .04em;
+  color: var(--gr-accent);
+  line-height: 1;
+}
+.gr-completado-banner {
+  background:
+    radial-gradient(ellipse at top left, rgba(198,255,58,.16), transparent 60%),
+    var(--gr-light-surface);
+  border: 1px solid var(--gr-accent);
+  border-radius: var(--radius-lg);
+}
+
+
+/* =========================================================
+   Constructor de rutina (ejercicios.html) - panel lateral
+   "sticky" en escritorio, offcanvas deslizable en movil, para
+   no tener que bajar hasta el final de la pagina para crear la
+   rutina. Usa el offcanvas responsivo de Bootstrap (offcanvas-lg):
+   por debajo del breakpoint lg se comporta como un panel deslizante
+   normal; en lg y mas grande se muestra en linea, sin backdrop.
+   ========================================================= */
+.gr-rutina-body {
+  padding: 0 !important;
+  overflow: hidden;
+}
+.gr-rutina-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 100%;
+}
+#listaCarrito {
+  overflow-y: auto;
+  min-height: 0;
+  flex: 1 1 auto;
+}
+
+@media (min-width: 992px) {
+  /* Bootstrap solo garantiza que el offcanvas responsivo (offcanvas-lg)
+     deje de comportarse como panel deslizante en este breakpoint; no
+     asegura que quede visible como sidebar "sticky". Se fuerza aqui de
+     forma explicita (con !important e id, para ganarle a las reglas de
+     Bootstrap) porque en la practica el panel no se estaba viendo en
+     escritorio. */
+  #panelRutina.offcanvas-lg {
+    display: block !important;
+    position: sticky !important;
+    top: 90px !important;
+    height: calc(100vh - 110px) !important;
+    max-width: none !important;
+    z-index: auto !important;
+    visibility: visible !important;
+    transform: none !important;
+    opacity: 1 !important;
+    background-color: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+  }
+  #panelRutina .offcanvas-body {
+    display: block !important;
+    height: 100% !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+  }
+}
+
+.gr-cart-fab {
+  position: fixed;
+  bottom: 1.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1030;
+  border-radius: 999px;
+  box-shadow: var(--shadow-dark);
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+
+/* =========================================================
+   Catalogo y detalle de ejercicios - pulido UI/UX (iteracion 6)
+   ========================================================= */
+.gr-group-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  border: 1px solid var(--gr-light-border);
+  color: var(--gr-gray-300);
+  border-radius: 999px;
+  padding: .2rem .7rem;
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: .02em;
+  white-space: nowrap;
+}
+
+/* Tarjeta de un ejercicio que ya esta en la rutina en construccion */
+.gr-card.is-en-rutina {
+  border-color: var(--gr-accent);
+}
+.gr-card-check {
+  position: absolute;
+  top: .65rem;
+  right: .65rem;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
+  background-color: var(--gr-accent);
+  color: var(--gr-black);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .95rem;
+  line-height: 1;
+}
+.btn-en-rutina {
+  background-color: transparent;
+  border: 2px solid var(--gr-accent);
+  color: var(--gr-accent);
+  font-family: var(--font-display);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  border-radius: var(--radius-sm);
+}
+.btn-en-rutina:disabled { opacity: 1; }
+
+
+/* =========================================================
+   Mi semana (mi-semana.html)
+   ========================================================= */
+.gr-card.is-hoy {
+  border-color: var(--gr-accent);
+  box-shadow: 0 0 0 1px var(--gr-accent);
+}
+
+
+/* =========================================================
+   Selector de dias al crear una rutina (ejercicios.html)
+   ========================================================= */
+.gr-dia-toggle {
+  min-width: 3.25rem;
+}
+.btn-check:checked + .gr-dia-toggle {
+  background-color: var(--gr-red);
+  border-color: var(--gr-red);
+  color: #fff;
+}

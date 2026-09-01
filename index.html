@@ -24,6 +24,7 @@
           <li class="nav-item"><a class="nav-link active" href="index.html">Inicio</a></li>
           <li class="nav-item"><a class="nav-link" href="ejercicios.html">Ejercicios</a></li>
           <li class="nav-item"><a class="nav-link" href="mis-rutinas.html">Mis rutinas</a></li>
+          <li class="nav-item"><a class="nav-link" href="mi-semana.html">Mi semana</a></li>
           <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
           <li class="nav-item"><a class="nav-link" href="nosotros.html">Nosotros</a></li>
           <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
@@ -38,34 +39,61 @@
 
   <header class="gr-hero text-center">
     <div class="container">
-      <span class="gr-badge gr-badge-accent mb-3 d-inline-block">Entrenamiento basado en datos</span>
-      <h1>DISCIPLINA. <span class="text-brand-red">DATOS.</span><br>RESULTADOS.</h1>
-      <p class="lead mx-auto" style="max-width:640px;">GymRat es la plataforma donde armas tus rutinas, sigues tu progreso por grupo muscular y compites en el leaderboard de tu gimnasio. Sin excusas.</p>
-      <div class="d-flex gap-3 justify-content-center flex-wrap mt-4">
-        <a href="registro.html" class="btn btn-brand btn-lg">Crear cuenta gratis</a>
-        <a href="ejercicios.html" class="btn btn-brand-outline btn-lg">Ver ejercicios</a>
+
+      <!-- Visitante sin sesion: hero de marketing (estado por defecto del markup). -->
+      <div id="heroAnonimo">
+        <span class="gr-badge gr-badge-accent mb-3 d-inline-block">Entrenamiento basado en datos</span>
+        <h1>DISCIPLINA. <span class="text-brand-red">DATOS.</span><br>RESULTADOS.</h1>
+        <p class="lead mx-auto" style="max-width:640px;">GymRat es la plataforma donde armas tus rutinas, sigues tu progreso por grupo muscular y compites en el leaderboard de tu gimnasio. Sin excusas.</p>
+        <div class="d-flex gap-3 justify-content-center flex-wrap mt-4">
+          <a href="registro.html" class="btn btn-brand btn-lg">Crear cuenta gratis</a>
+          <a href="ejercicios.html" class="btn btn-brand-outline btn-lg">Ver ejercicios</a>
+        </div>
       </div>
+
+      <!-- Con sesion activa: bienvenida personalizada en vez de invitar a crear cuenta.
+           Oculto por defecto (d-none); lo completa y muestra actualizarHeroSesion() en
+           home.js si GymRatData.getSesion() devuelve una sesion activa. -->
+      <div id="heroSesion" class="d-none">
+        <span class="gr-avatar-circle-lg mb-3" id="heroAvatar"></span>
+        <h1 class="mb-3" id="heroTitulo" style="font-size:clamp(2.1rem, 4.2vw, 3.4rem);"></h1>
+        <p class="lead mx-auto" id="heroSubtitulo" style="max-width:640px;"></p>
+        <div class="d-flex gap-3 justify-content-center flex-wrap mt-4" id="heroAcciones"></div>
+      </div>
+
     </div>
   </header>
 
-  <section class="py-4 gr-dark-section-soft">
+  <section class="py-5 gr-dark-section-soft">
     <div class="container">
       <div class="row text-center g-4">
         <div class="col-6 col-md-3">
-          <div class="stat-value h2 mb-0 text-brand-red" id="statEjercicios">0</div>
-          <small class="text-uppercase text-muted">Ejercicios</small>
+          <div class="gr-stat-card p-3 h-100">
+            <i class="bi bi-lightning-charge-fill text-brand-red mb-2 d-block" style="font-size:1.4rem;"></i>
+            <div class="stat-value h2 mb-0" id="statEjercicios">0</div>
+            <small class="text-uppercase text-muted">Ejercicios</small>
+          </div>
         </div>
         <div class="col-6 col-md-3">
-          <div class="stat-value h2 mb-0 text-brand-red" id="statRutinas">0</div>
-          <small class="text-uppercase text-muted">Rutinas</small>
+          <div class="gr-stat-card p-3 h-100">
+            <i class="bi bi-clipboard2-pulse text-brand-red mb-2 d-block" style="font-size:1.4rem;"></i>
+            <div class="stat-value h2 mb-0" id="statRutinas">0</div>
+            <small class="text-uppercase text-muted">Rutinas</small>
+          </div>
         </div>
         <div class="col-6 col-md-3">
-          <div class="stat-value h2 mb-0 text-brand-red" id="statAtletas">0</div>
-          <small class="text-uppercase text-muted">Atletas</small>
+          <div class="gr-stat-card p-3 h-100">
+            <i class="bi bi-people-fill text-brand-red mb-2 d-block" style="font-size:1.4rem;"></i>
+            <div class="stat-value h2 mb-0" id="statAtletas">0</div>
+            <small class="text-uppercase text-muted">Atletas</small>
+          </div>
         </div>
         <div class="col-6 col-md-3">
-          <div class="stat-value h2 mb-0 text-brand-red" id="statGrupos">0</div>
-          <small class="text-uppercase text-muted">Grupos musculares</small>
+          <div class="gr-stat-card p-3 h-100">
+            <i class="bi bi-diagram-3-fill text-brand-red mb-2 d-block" style="font-size:1.4rem;"></i>
+            <div class="stat-value h2 mb-0" id="statGrupos">0</div>
+            <small class="text-uppercase text-muted">Grupos musculares</small>
+          </div>
         </div>
       </div>
     </div>
@@ -131,8 +159,8 @@
           <h6 class="text-uppercase display-font mb-3" style="font-family:var(--font-display);letter-spacing:.05em;">Legal</h6>
           <ul class="list-unstyled small">
             <li class="mb-2"><a href="privacidad.html">Política de privacidad (Ley 21.719)</a></li>
-            <li class="mb-2"><a href="login.html">Iniciar sesión</a></li>
-            <li class="mb-2"><a href="registro.html">Crear cuenta</a></li>
+            <li class="mb-2" id="footerLinkLogin"><a href="login.html">Iniciar sesión</a></li>
+            <li class="mb-2" id="footerLinkRegistro"><a href="registro.html">Crear cuenta</a></li>
           </ul>
         </div>
       </div>

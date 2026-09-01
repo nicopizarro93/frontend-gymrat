@@ -40,9 +40,27 @@ function renderRutinas() {
       const idColapso = "detalle-rutina-" + r.idRutina;
       const listaEjercicios = completa.ejercicios.length
         ? '<ul class="list-unstyled small text-muted mb-0">' +
-          completa.ejercicios.map((e) => `<li><i class="bi bi-check2 text-brand-red me-1"></i>${e.nombreEjercicio} <span class="text-muted">(${e.grupoMuscular})</span></li>`).join("") +
+          completa.ejercicios
+            .map((e) => `<li><i class="bi bi-check2 text-brand-red me-1"></i>${e.nombreEjercicio} <strong>${e.series}×${e.repeticiones}</strong> <span class="text-muted">(${e.grupoMuscular})</span></li>`)
+            .join("") +
           "</ul>"
         : '<p class="small text-muted mb-0">Sin ejercicios asociados.</p>';
+
+      const ejecucion = GymRatData.getEjecucion(r.idRutina);
+      const totalEjercicios = completa.ejercicios.length;
+      const completados = Object.values(ejecucion.progreso).filter((p) => p.completado).length;
+      const rutinaCompletada = totalEjercicios > 0 && completados === totalEjercicios;
+      const enProgreso = completados > 0 && !rutinaCompletada;
+
+      let badgeEstado = "";
+      let textoBoton = "Ejecutar rutina";
+      if (rutinaCompletada) {
+        badgeEstado = '<span class="gr-badge gr-badge-accent">Completada</span>';
+        textoBoton = "Repetir rutina";
+      } else if (enProgreso) {
+        badgeEstado = '<span class="gr-badge gr-badge-outline">En progreso (' + completados + "/" + totalEjercicios + ")</span>";
+        textoBoton = "Continuar";
+      }
 
       return `
       <div class="col-md-6 col-lg-4">
@@ -51,10 +69,11 @@ function renderRutinas() {
             <h5 class="card-title mb-0">${r.nombreRutina}</h5>
             ${badgeDificultad(r.dificultad)}
           </div>
-          <p class="text-muted small mb-3">
+          <p class="text-muted small mb-2">
             <i class="bi bi-calendar3 me-1"></i>${r.dias} días/semana &middot;
-            <i class="bi bi-lightning-charge ms-1 me-1"></i>${completa.ejercicios.length} ejercicios
+            <i class="bi bi-lightning-charge ms-1 me-1"></i>${totalEjercicios} ejercicios
           </p>
+          ${badgeEstado ? '<div class="mb-2">' + badgeEstado + "</div>" : ""}
 
           <button type="button" class="btn btn-sm btn-outline-secondary align-self-start mb-2" data-bs-toggle="collapse" data-bs-target="#${idColapso}">
             <i class="bi bi-chevron-down"></i> Ver ejercicios
@@ -63,9 +82,14 @@ function renderRutinas() {
             ${listaEjercicios}
           </div>
 
-          <button type="button" class="btn btn-sm btn-outline-danger mt-auto btn-eliminar-rutina" data-id="${r.idRutina}">
-            <i class="bi bi-trash"></i> Eliminar rutina
-          </button>
+          <div class="d-flex gap-2 mt-auto">
+            <a href="ejecutar-rutina.html?id=${r.idRutina}" class="btn btn-brand btn-sm flex-fill">
+              <i class="bi bi-play-fill"></i> ${textoBoton}
+            </a>
+            <button type="button" class="btn btn-sm btn-outline-danger btn-eliminar-rutina" data-id="${r.idRutina}" title="Eliminar rutina">
+              <i class="bi bi-trash"></i>
+            </button>
+          </div>
         </div>
       </div>`;
     })

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>5 errores comunes al armar tu rutina | Blog GymRat</title>
+  <title>Mi semana | GymRat</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -12,7 +12,7 @@
 </head>
 <body class="gr-dark-section">
 
-  <nav class="navbar navbar-expand-lg gr-navbar sticky-top">
+  <nav class="navbar navbar-expand-lg gr-light-navbar sticky-top">
     <div class="container">
       <a class="navbar-brand" href="index.html">GYM<span>RAT</span></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navGymrat" aria-controls="navGymrat" aria-expanded="false" aria-label="Abrir menú">
@@ -23,8 +23,8 @@
           <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
           <li class="nav-item"><a class="nav-link" href="ejercicios.html">Ejercicios</a></li>
           <li class="nav-item"><a class="nav-link" href="mis-rutinas.html">Mis rutinas</a></li>
-          <li class="nav-item"><a class="nav-link" href="mi-semana.html">Mi semana</a></li>
-          <li class="nav-item"><a class="nav-link active" href="blog.html">Blog</a></li>
+          <li class="nav-item"><a class="nav-link active" href="mi-semana.html">Mi semana</a></li>
+          <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
           <li class="nav-item"><a class="nav-link" href="nosotros.html">Nosotros</a></li>
           <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
         </ul>
@@ -36,38 +36,31 @@
     </div>
   </nav>
 
-  <article class="py-5">
-    <div class="container" style="max-width:760px;">
-      <a href="blog.html" class="text-brand-red small"><i class="bi bi-arrow-left"></i> Volver al blog</a>
-      <span class="gr-badge gr-badge-red d-inline-block my-3">Rutinas</span>
-      <h1 class="mb-4">5 errores comunes al armar tu rutina</h1>
-      <p class="text-muted mb-4">Publicado por el equipo GymRat</p>
+  <section class="py-5" style="background-color:var(--gr-light-bg);min-height:80vh;">
+    <div class="container">
+      <hr class="gr-divider-red mb-3">
+      <h1 class="h2 mb-1">Mi semana</h1>
+      <p class="text-muted mb-4">Asigna una rutina a cada día y encuentra en un clic la que te toca hoy.</p>
 
-      <p>Armar una rutina no es solo elegir ejercicios al azar y esperar resultados. La mayoría de las rutinas que fallan, fallan antes de la primera repetición: fallan en el papel. Estos son los errores más comunes que vemos, y cómo GymRat te ayuda a evitarlos.</p>
+      <div id="estadoSinRutinas" class="card gr-card p-5 text-center d-none">
+        <div class="gr-icon-tile mx-auto mb-3" style="width:4rem;height:4rem;font-size:1.8rem;">
+          <i class="bi bi-calendar3"></i>
+        </div>
+        <h5 class="mb-2">Todavía no tienes rutinas guardadas</h5>
+        <p class="text-muted mb-4">Arma al menos una rutina para poder asignarla a los días de la semana.</p>
+        <a href="ejercicios.html" class="btn btn-brand mx-auto" style="max-width:260px;">Ir al catálogo de ejercicios</a>
+      </div>
 
-      <h4 class="mt-4">1. No definir un nivel de dificultad real</h4>
-      <p class="text-muted">Elegir ejercicios "avanzados" sin dominar los básicos es la forma más rápida de lesionarte o frustrarte. En GymRat, cada ejercicio tiene una dificultad asignada (principiante, intermedio, avanzado) para que armes tu rutina acorde a tu nivel real, no al que te gustaría tener.</p>
+      <div id="contenidoSemana" class="d-none">
+        <div class="card gr-card p-4 p-lg-5 mb-5" id="tarjetaHoy"></div>
 
-      <h4 class="mt-4">2. Ignorar algún grupo muscular</h4>
-      <p class="text-muted">Es común entrenar solo lo que "se ve" y descuidar espalda, piernas o core. Una rutina balanceada distribuye el trabajo entre grupos musculares a lo largo de la semana.</p>
-
-      <h4 class="mt-4">3. No fijar una cantidad de días realista</h4>
-      <p class="text-muted">Una rutina de 6 días que no puedes sostener vale menos que una de 3 días que sí cumples. Al crear una rutina en GymRat defines explícitamente cuántos días a la semana la vas a entrenar.</p>
-
-      <h4 class="mt-4">4. No registrar el progreso</h4>
-      <p class="text-muted">Sin números no hay progreso medible. Por eso el sistema está pensado para llevar un registro de marcas y compararlas en un leaderboard.</p>
-
-      <h4 class="mt-4">5. Copiar la rutina de otra persona sin adaptarla</h4>
-      <p class="text-muted">Lo que le funciona a otro atleta no necesariamente te sirve a ti. Usa el catálogo de ejercicios como punto de partida, pero arma tu propia combinación según tu nivel y tus días disponibles.</p>
-
-      <hr class="border-secondary my-5">
-      <div class="text-center">
-        <a href="ejercicios.html" class="btn btn-brand btn-lg">Explorar catálogo de ejercicios</a>
+        <h2 class="h5 gr-section-title mb-4">Tu semana</h2>
+        <div class="row g-3" id="grillaSemana"></div>
       </div>
     </div>
-  </article>
+  </section>
 
-  <footer class="gr-footer pt-5 pb-4 mt-3">
+  <footer class="gr-footer pt-5 pb-4">
     <div class="container">
       <div class="row g-4">
         <div class="col-md-4">
@@ -100,6 +93,6 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="js/mock-data.js"></script>
   <script src="js/sesion-ui.js"></script>
-  <script>document.addEventListener("DOMContentLoaded", () => actualizarNavSesion(""));</script>
+  <script src="js/mi-semana.js"></script>
 </body>
 </html>

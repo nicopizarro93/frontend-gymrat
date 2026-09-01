@@ -26,16 +26,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const yaAgregado = GymRatData.getCarrito().some((item) => item.idEjercicio === ejercicio.idEjercicio);
 
+  // Media del ejercicio: gif de demostracion si ya esta cargado (ver
+  // gifUrl en mock-data.js - solo mock, extension no soportada por el
+  // backend real), o el icono generico + una nota de "proximamente" si
+  // todavia no hay gif para ese ejercicio.
+  const mediaHtml = ejercicio.gifUrl
+    ? '<div class="gr-ejercicio-media"><img src="' +
+      ejercicio.gifUrl +
+      '" alt="Demostración de ' +
+      ejercicio.nombreEjercicio +
+      '" loading="lazy"></div>'
+    : '<div class="gr-ejercicio-media gr-ejercicio-media-vacia">' +
+      '<div class="gr-icon-tile mx-auto"><i class="bi bi-lightning-charge-fill"></i></div>' +
+      '<p class="small text-muted mt-2 mb-0">Demostración en gif<br>próximamente</p>' +
+      "</div>";
+
   contenedorDetalle.innerHTML = `
     <div class="card gr-card p-4 p-lg-5 position-relative">
       ${yaAgregado ? '<span class="gr-card-check" style="top:1rem;right:1rem;" title="Ya está en tu rutina"><i class="bi bi-check-lg"></i></span>' : ""}
       <div class="row g-4 align-items-center">
-        <div class="col-md-3 text-center">
-          <div class="gr-icon-tile mx-auto" style="width:5rem;height:5rem;font-size:2.2rem;">
-            <i class="bi bi-lightning-charge-fill"></i>
-          </div>
+        <div class="col-md-4">
+          ${mediaHtml}
         </div>
-        <div class="col-md-9">
+        <div class="col-md-8">
           <h1 class="h3 mb-3">${ejercicio.nombreEjercicio}</h1>
           <div class="d-flex flex-wrap gap-2 mb-4">
             <span class="gr-group-pill"><i class="bi bi-tag-fill"></i>${ejercicio.grupoMuscular}</span>

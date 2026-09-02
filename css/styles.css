@@ -670,3 +670,12 @@ dl dt { font-weight: 600; }
   text-align: center;
   padding: 1.5rem;
 }
+/* Variante chica del mismo bloque de media, para cuando el gif se
+   muestra dentro de una fila mas angosta (ejecutar-rutina.html) en vez
+   de una columna ancha de tarjeta - mismo look, solo mas acotado y
+   centrado. */
+.gr-ejercicio-media-mini {
+  width: 100%;
+  max-width: 220px;
+  margin: 0 auto 1rem;
+}

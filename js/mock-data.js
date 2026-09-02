@@ -41,7 +41,7 @@
 
   // Subir este numero fuerza un re-seed en navegadores que ya tengan
   // datos guardados de una version anterior de la semilla.
-  const SEED_VERSION = "5";
+  const SEED_VERSION = "6";
 
   const ROLES = { MIEMBRO: "MIEMBRO", STAFF: "STAFF" };
   const GRUPOS_MUSCULARES = ["PECHO", "ESPALDA", "PIERNA", "HOMBRO", "BICEP", "TRICEP", "ABDOMEN"];
@@ -94,18 +94,18 @@
       { idEjercicio: 4, nombreEjercicio: "Dominadas", grupoMuscular: "ESPALDA", dificultad: "AVANZADO", gifUrl: "gif/espalda/4-dominadas.gif" },
       { idEjercicio: 5, nombreEjercicio: "Remo con barra", grupoMuscular: "ESPALDA", dificultad: "INTERMEDIO", gifUrl: "gif/espalda/5-remo-con-barra.gif" },
       { idEjercicio: 6, nombreEjercicio: "Jalon al pecho", grupoMuscular: "ESPALDA", dificultad: "PRINCIPIANTE", gifUrl: "gif/espalda/6-jalon-al-pecho.jpg" },
-      { idEjercicio: 7, nombreEjercicio: "Sentadilla", grupoMuscular: "PIERNA", dificultad: "INTERMEDIO", gifUrl: null },
-      { idEjercicio: 8, nombreEjercicio: "Prensa de piernas", grupoMuscular: "PIERNA", dificultad: "PRINCIPIANTE", gifUrl: null },
-      { idEjercicio: 9, nombreEjercicio: "Zancadas", grupoMuscular: "PIERNA", dificultad: "PRINCIPIANTE", gifUrl: null },
-      { idEjercicio: 10, nombreEjercicio: "Peso muerto", grupoMuscular: "PIERNA", dificultad: "AVANZADO", gifUrl: null },
-      { idEjercicio: 11, nombreEjercicio: "Press militar", grupoMuscular: "HOMBRO", dificultad: "INTERMEDIO", gifUrl: null },
-      { idEjercicio: 12, nombreEjercicio: "Elevaciones laterales", grupoMuscular: "HOMBRO", dificultad: "PRINCIPIANTE", gifUrl: null },
-      { idEjercicio: 13, nombreEjercicio: "Curl con barra", grupoMuscular: "BICEP", dificultad: "PRINCIPIANTE", gifUrl: null },
-      { idEjercicio: 14, nombreEjercicio: "Curl martillo", grupoMuscular: "BICEP", dificultad: "PRINCIPIANTE", gifUrl: null },
-      { idEjercicio: 15, nombreEjercicio: "Press frances", grupoMuscular: "TRICEP", dificultad: "INTERMEDIO", gifUrl: null },
-      { idEjercicio: 16, nombreEjercicio: "Fondos en banco", grupoMuscular: "TRICEP", dificultad: "PRINCIPIANTE", gifUrl: null },
-      { idEjercicio: 17, nombreEjercicio: "Plancha abdominal", grupoMuscular: "ABDOMEN", dificultad: "PRINCIPIANTE", gifUrl: null },
-      { idEjercicio: 18, nombreEjercicio: "Elevacion de piernas", grupoMuscular: "ABDOMEN", dificultad: "INTERMEDIO", gifUrl: null },
+      { idEjercicio: 7, nombreEjercicio: "Sentadilla", grupoMuscular: "PIERNA", dificultad: "INTERMEDIO", gifUrl: "gif/pierna/7-sentadilla.gif" },
+      { idEjercicio: 8, nombreEjercicio: "Prensa de piernas", grupoMuscular: "PIERNA", dificultad: "PRINCIPIANTE", gifUrl: "gif/pierna/8-prensa-de-piernas.gif" },
+      { idEjercicio: 9, nombreEjercicio: "Zancadas", grupoMuscular: "PIERNA", dificultad: "PRINCIPIANTE", gifUrl: "gif/pierna/9-zancadas.gif" },
+      { idEjercicio: 10, nombreEjercicio: "Peso muerto", grupoMuscular: "PIERNA", dificultad: "AVANZADO", gifUrl: "gif/pierna/10-peso-muerto.gif" },
+      { idEjercicio: 11, nombreEjercicio: "Press militar", grupoMuscular: "HOMBRO", dificultad: "INTERMEDIO", gifUrl: "gif/hombro/11-press-militar.gif" },
+      { idEjercicio: 12, nombreEjercicio: "Elevaciones laterales", grupoMuscular: "HOMBRO", dificultad: "PRINCIPIANTE", gifUrl: "gif/hombro/12-elevaciones-laterales.gif" },
+      { idEjercicio: 13, nombreEjercicio: "Curl con barra", grupoMuscular: "BICEP", dificultad: "PRINCIPIANTE", gifUrl: "gif/bicep/13-curl-con-barra.gif" },
+      { idEjercicio: 14, nombreEjercicio: "Curl martillo", grupoMuscular: "BICEP", dificultad: "PRINCIPIANTE", gifUrl: "gif/bicep/14-curl-martillo.gif" },
+      { idEjercicio: 15, nombreEjercicio: "Press frances", grupoMuscular: "TRICEP", dificultad: "INTERMEDIO", gifUrl: "gif/tricep/15-press-frances.gif" },
+      { idEjercicio: 16, nombreEjercicio: "Fondos en banco", grupoMuscular: "TRICEP", dificultad: "PRINCIPIANTE", gifUrl: "gif/tricep/16-fondos-en-banco.gif" },
+      { idEjercicio: 17, nombreEjercicio: "Plancha abdominal", grupoMuscular: "ABDOMEN", dificultad: "PRINCIPIANTE", gifUrl: "gif/abdomen/17-plancha-abdominal.jpg" },
+      { idEjercicio: 18, nombreEjercicio: "Elevacion de piernas", grupoMuscular: "ABDOMEN", dificultad: "INTERMEDIO", gifUrl: "gif/abdomen/18-elevacion-piernas.gif" },
       // Ampliacion del catalogo (pedido del usuario): los ejercicios mas
       // usados de cada grupo muscular, para no quedarse solo con 2-4 por
       // categoria.
@@ -117,24 +117,24 @@
       { idEjercicio: 24, nombreEjercicio: "Remo sentado en polea baja", grupoMuscular: "ESPALDA", dificultad: "PRINCIPIANTE", gifUrl: "gif/espalda/24-remo-sentado-polea-baja.gif" },
       { idEjercicio: 25, nombreEjercicio: "Pull-over con mancuerna", grupoMuscular: "ESPALDA", dificultad: "INTERMEDIO", gifUrl: "gif/espalda/25-pull-over-mancuerna.gif" },
       { idEjercicio: 26, nombreEjercicio: "Hiperextensiones lumbares", grupoMuscular: "ESPALDA", dificultad: "PRINCIPIANTE", gifUrl: "gif/espalda/26-hiperextensiones-lumbares.gif" },
-      { idEjercicio: 27, nombreEjercicio: "Extension de cuadriceps", grupoMuscular: "PIERNA", dificultad: "PRINCIPIANTE", gifUrl: null },
-      { idEjercicio: 28, nombreEjercicio: "Curl femoral", grupoMuscular: "PIERNA", dificultad: "PRINCIPIANTE", gifUrl: null },
-      { idEjercicio: 29, nombreEjercicio: "Elevacion de talones", grupoMuscular: "PIERNA", dificultad: "PRINCIPIANTE", gifUrl: null },
-      { idEjercicio: 30, nombreEjercicio: "Hip thrust", grupoMuscular: "PIERNA", dificultad: "INTERMEDIO", gifUrl: null },
-      { idEjercicio: 31, nombreEjercicio: "Sentadilla bulgara", grupoMuscular: "PIERNA", dificultad: "AVANZADO", gifUrl: null },
-      { idEjercicio: 32, nombreEjercicio: "Elevaciones frontales", grupoMuscular: "HOMBRO", dificultad: "PRINCIPIANTE", gifUrl: null },
-      { idEjercicio: 33, nombreEjercicio: "Pajaros (deltoide posterior)", grupoMuscular: "HOMBRO", dificultad: "PRINCIPIANTE", gifUrl: null },
-      { idEjercicio: 34, nombreEjercicio: "Press Arnold", grupoMuscular: "HOMBRO", dificultad: "INTERMEDIO", gifUrl: null },
-      { idEjercicio: 35, nombreEjercicio: "Encogimientos de hombros", grupoMuscular: "HOMBRO", dificultad: "PRINCIPIANTE", gifUrl: null },
-      { idEjercicio: 36, nombreEjercicio: "Curl con mancuernas alterno", grupoMuscular: "BICEP", dificultad: "PRINCIPIANTE", gifUrl: null },
-      { idEjercicio: 37, nombreEjercicio: "Curl en banco Scott", grupoMuscular: "BICEP", dificultad: "INTERMEDIO", gifUrl: null },
-      { idEjercicio: 38, nombreEjercicio: "Curl concentrado", grupoMuscular: "BICEP", dificultad: "INTERMEDIO", gifUrl: null },
-      { idEjercicio: 39, nombreEjercicio: "Extension de triceps en polea", grupoMuscular: "TRICEP", dificultad: "PRINCIPIANTE", gifUrl: null },
-      { idEjercicio: 40, nombreEjercicio: "Press cerrado (agarre estrecho)", grupoMuscular: "TRICEP", dificultad: "INTERMEDIO", gifUrl: null },
-      { idEjercicio: 41, nombreEjercicio: "Patada de triceps", grupoMuscular: "TRICEP", dificultad: "PRINCIPIANTE", gifUrl: null },
-      { idEjercicio: 42, nombreEjercicio: "Crunch abdominal", grupoMuscular: "ABDOMEN", dificultad: "PRINCIPIANTE", gifUrl: null },
-      { idEjercicio: 43, nombreEjercicio: "Rueda abdominal", grupoMuscular: "ABDOMEN", dificultad: "AVANZADO", gifUrl: null },
-      { idEjercicio: 44, nombreEjercicio: "Giro ruso (Russian twist)", grupoMuscular: "ABDOMEN", dificultad: "INTERMEDIO", gifUrl: null },
+      { idEjercicio: 27, nombreEjercicio: "Extension de cuadriceps", grupoMuscular: "PIERNA", dificultad: "PRINCIPIANTE", gifUrl: "gif/pierna/27-extension-cuadriceps.gif" },
+      { idEjercicio: 28, nombreEjercicio: "Curl femoral", grupoMuscular: "PIERNA", dificultad: "PRINCIPIANTE", gifUrl: "gif/pierna/28-curl-femoral.gif" },
+      { idEjercicio: 29, nombreEjercicio: "Elevacion de talones", grupoMuscular: "PIERNA", dificultad: "PRINCIPIANTE", gifUrl: "gif/pierna/29-elevacion-talones.gif" },
+      { idEjercicio: 30, nombreEjercicio: "Hip thrust", grupoMuscular: "PIERNA", dificultad: "INTERMEDIO", gifUrl: "gif/pierna/30-hip-thrust.gif" },
+      { idEjercicio: 31, nombreEjercicio: "Sentadilla bulgara", grupoMuscular: "PIERNA", dificultad: "AVANZADO", gifUrl: "gif/pierna/31-sentadilla-bulgara.gif" },
+      { idEjercicio: 32, nombreEjercicio: "Elevaciones frontales", grupoMuscular: "HOMBRO", dificultad: "PRINCIPIANTE", gifUrl: "gif/hombro/32-elevaciones-frontales.gif" },
+      { idEjercicio: 33, nombreEjercicio: "Pajaros (deltoide posterior)", grupoMuscular: "HOMBRO", dificultad: "PRINCIPIANTE", gifUrl: "gif/hombro/33-pajaros.gif" },
+      { idEjercicio: 34, nombreEjercicio: "Press Arnold", grupoMuscular: "HOMBRO", dificultad: "INTERMEDIO", gifUrl: "gif/hombro/34-press-arnold.gif" },
+      { idEjercicio: 35, nombreEjercicio: "Encogimientos de hombros", grupoMuscular: "HOMBRO", dificultad: "PRINCIPIANTE", gifUrl: "gif/hombro/35-encogimientos-hombros.gif" },
+      { idEjercicio: 36, nombreEjercicio: "Curl con mancuernas alterno", grupoMuscular: "BICEP", dificultad: "PRINCIPIANTE", gifUrl: "gif/bicep/36-curl-mancuernas-alterno.gif" },
+      { idEjercicio: 37, nombreEjercicio: "Curl en banco Scott", grupoMuscular: "BICEP", dificultad: "INTERMEDIO", gifUrl: "gif/bicep/37-curl-banco-scott.gif" },
+      { idEjercicio: 38, nombreEjercicio: "Curl concentrado", grupoMuscular: "BICEP", dificultad: "INTERMEDIO", gifUrl: "gif/bicep/38-curl-concentrado.gif" },
+      { idEjercicio: 39, nombreEjercicio: "Extension de triceps en polea", grupoMuscular: "TRICEP", dificultad: "PRINCIPIANTE", gifUrl: "gif/tricep/39-extension-triceps-polea.gif" },
+      { idEjercicio: 40, nombreEjercicio: "Press cerrado (agarre estrecho)", grupoMuscular: "TRICEP", dificultad: "INTERMEDIO", gifUrl: "gif/tricep/40-press-cerrado.gif" },
+      { idEjercicio: 41, nombreEjercicio: "Patada de triceps", grupoMuscular: "TRICEP", dificultad: "PRINCIPIANTE", gifUrl: "gif/tricep/41-patada-triceps.gif" },
+      { idEjercicio: 42, nombreEjercicio: "Crunch abdominal", grupoMuscular: "ABDOMEN", dificultad: "PRINCIPIANTE", gifUrl: "gif/abdomen/42-crunch-abdominal.gif" },
+      { idEjercicio: 43, nombreEjercicio: "Rueda abdominal", grupoMuscular: "ABDOMEN", dificultad: "AVANZADO", gifUrl: "gif/abdomen/43-rueda-abdominal.gif" },
+      { idEjercicio: 44, nombreEjercicio: "Giro ruso (Russian twist)", grupoMuscular: "ABDOMEN", dificultad: "INTERMEDIO", gifUrl: "gif/abdomen/44-giro-ruso.gif" },
     ];
   }
 

@@ -143,40 +143,57 @@ document.addEventListener("DOMContentLoaded", () => {
       : '<i class="bi bi-circle text-muted fs-4"></i>';
 
     let detalle = "";
-    if (abierto && completado) {
-      detalle =
-        '<div class="mt-3 pt-3 border-top" style="border-color:var(--gr-light-border) !important;">' +
-        '<p class="small text-muted mb-0"><i class="bi bi-check2-all me-1"></i>Ejercicio completado — ' +
-        ejercicio.series + " series × " + ejercicio.repeticiones + " repeticiones.</p></div>";
-    } else if (abierto) {
-      const descansoActivo =
-        estado.descansoActivo && estado.descansoActivo.idEjercicio === ejercicio.idEjercicio ? estado.descansoActivo : null;
+    if (abierto) {
+      // Gif de demostracion (ver gifUrl en mock-data.js, solo mock) - se
+      // muestra en todo ejercicio expandido, sin importar el estado
+      // (completado, en descanso o en serie activa), para poder revisar
+      // la tecnica sin salir de la pantalla de ejecucion.
+      const mediaHtml = ejercicio.gifUrl
+        ? '<div class="gr-ejercicio-media gr-ejercicio-media-mini"><img src="' +
+          ejercicio.gifUrl +
+          '" alt="Demostración de ' +
+          ejercicio.nombreEjercicio +
+          '" loading="lazy"></div>'
+        : '<div class="gr-ejercicio-media gr-ejercicio-media-mini gr-ejercicio-media-vacia"><div class="gr-icon-tile mx-auto"><i class="bi bi-lightning-charge-fill"></i></div></div>';
 
-      const dots = Array.from({ length: ejercicio.series }, (_, i) => {
-        let clase = "gr-set-dot";
-        if (i < item.serieActual) clase += " is-hecha";
-        else if (i === item.serieActual) clase += " is-actual";
-        return '<span class="' + clase + '">' + (i + 1) + "</span>";
-      }).join("");
-
-      if (descansoActivo) {
-        const restante = Math.max(0, (descansoActivo.descansoHasta - Date.now()) / 1000);
-        detalle =
-          '<div class="mt-3 pt-3 border-top text-center" style="border-color:var(--gr-light-border) !important;">' +
-          '<p class="small text-muted mb-1">Descanso — preparando serie ' + (item.serieActual + 1) + " de " + ejercicio.series + "</p>" +
-          '<div class="gr-timer-display mb-2" id="temporizador-' + ejercicio.idEjercicio + '">' + formatoTiempo(restante) + "</div>" +
-          '<button type="button" class="btn btn-sm btn-brand-outline btn-saltar-descanso" data-id="' + ejercicio.idEjercicio + '">Saltar descanso</button>' +
-          "</div>";
-      } else {
+      if (completado) {
         detalle =
           '<div class="mt-3 pt-3 border-top" style="border-color:var(--gr-light-border) !important;">' +
-          '<div class="d-flex flex-wrap gap-2 justify-content-center mb-3">' + dots + "</div>" +
-          '<p class="text-center mb-3">Serie <strong>' + (item.serieActual + 1) + "</strong> de " + ejercicio.series +
-          " · <strong>" + ejercicio.repeticiones + "</strong> repeticiones</p>" +
-          '<button type="button" class="btn btn-brand w-100 btn-serie-lista" data-id="' + ejercicio.idEjercicio + '">' +
-          '<i class="bi bi-check-lg"></i> Listo</button>' +
-          '<p class="small text-muted text-center mt-2 mb-0">Descanso entre series: ' + ejercicio.descansoSegundos + " s</p>" +
-          "</div>";
+          mediaHtml +
+          '<p class="small text-muted mb-0 text-center"><i class="bi bi-check2-all me-1"></i>Ejercicio completado — ' +
+          ejercicio.series + " series × " + ejercicio.repeticiones + " repeticiones.</p></div>";
+      } else {
+        const descansoActivo =
+          estado.descansoActivo && estado.descansoActivo.idEjercicio === ejercicio.idEjercicio ? estado.descansoActivo : null;
+
+        const dots = Array.from({ length: ejercicio.series }, (_, i) => {
+          let clase = "gr-set-dot";
+          if (i < item.serieActual) clase += " is-hecha";
+          else if (i === item.serieActual) clase += " is-actual";
+          return '<span class="' + clase + '">' + (i + 1) + "</span>";
+        }).join("");
+
+        if (descansoActivo) {
+          const restante = Math.max(0, (descansoActivo.descansoHasta - Date.now()) / 1000);
+          detalle =
+            '<div class="mt-3 pt-3 border-top text-center" style="border-color:var(--gr-light-border) !important;">' +
+            mediaHtml +
+            '<p class="small text-muted mb-1">Descanso — preparando serie ' + (item.serieActual + 1) + " de " + ejercicio.series + "</p>" +
+            '<div class="gr-timer-display mb-2" id="temporizador-' + ejercicio.idEjercicio + '">' + formatoTiempo(restante) + "</div>" +
+            '<button type="button" class="btn btn-sm btn-brand-outline btn-saltar-descanso" data-id="' + ejercicio.idEjercicio + '">Saltar descanso</button>' +
+            "</div>";
+        } else {
+          detalle =
+            '<div class="mt-3 pt-3 border-top" style="border-color:var(--gr-light-border) !important;">' +
+            mediaHtml +
+            '<div class="d-flex flex-wrap gap-2 justify-content-center mb-3">' + dots + "</div>" +
+            '<p class="text-center mb-3">Serie <strong>' + (item.serieActual + 1) + "</strong> de " + ejercicio.series +
+            " · <strong>" + ejercicio.repeticiones + "</strong> repeticiones</p>" +
+            '<button type="button" class="btn btn-brand w-100 btn-serie-lista" data-id="' + ejercicio.idEjercicio + '">' +
+            '<i class="bi bi-check-lg"></i> Listo</button>' +
+            '<p class="small text-muted text-center mt-2 mb-0">Descanso entre series: ' + ejercicio.descansoSegundos + " s</p>" +
+            "</div>";
+        }
       }
     }
 

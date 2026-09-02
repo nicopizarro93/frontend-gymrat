@@ -20,9 +20,46 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("statAtletas").textContent = atletas.length;
   document.getElementById("statGrupos").textContent = grupos.size;
 
+  renderGruposMusculares(ejercicios);
   renderEjerciciosDestacados(ejercicios.slice(0, 3));
   renderRutinasDestacadas(rutinas.slice(0, 3));
 });
+
+// Metadata SOLO de presentacion (nombre bonito + icono) para cada valor
+// de GymRatData.GRUPOS_MUSCULARES; el conteo de cada tarjeta sale del
+// catalogo real, no de un numero fijo, para que quede correcto apenas
+// se agreguen o quiten ejercicios.
+const GRUPOS_INFO = [
+  { clave: "PECHO", nombre: "Pecho", icono: "bi-shield-fill" },
+  { clave: "ESPALDA", nombre: "Espalda", icono: "bi-arrow-left-right" },
+  { clave: "PIERNA", nombre: "Pierna", icono: "bi-bicycle" },
+  { clave: "HOMBRO", nombre: "Hombro", icono: "bi-arrows-angle-expand" },
+  { clave: "BICEP", nombre: "Bícep", icono: "bi-hand-thumbs-up-fill" },
+  { clave: "TRICEP", nombre: "Trícep", icono: "bi-arrows-collapse" },
+  { clave: "ABDOMEN", nombre: "Abdomen", icono: "bi-grid-3x2-gap-fill" },
+];
+
+/**
+ * Tarjetas "Explora por grupo muscular" en la home: un acceso directo
+ * por categoria hacia el catalogo (ejercicios.html?grupo=X), con el
+ * numero real de ejercicios de esa categoria. ejercicios.js lee ese
+ * query string y preselecciona el chip de filtro correspondiente.
+ */
+function renderGruposMusculares(ejercicios) {
+  const contenedor = document.getElementById("listaGrupos");
+  if (!contenedor) return;
+  contenedor.innerHTML = GRUPOS_INFO.map((grupo) => {
+    const cantidad = ejercicios.filter((e) => e.grupoMuscular === grupo.clave).length;
+    return `
+    <div class="col-6 col-lg-3">
+      <a href="ejercicios.html?grupo=${grupo.clave}" class="card gr-card-dark h-100 p-3 d-block text-decoration-none text-reset">
+        <div class="gr-icon-tile mb-3"><i class="bi ${grupo.icono}"></i></div>
+        <h6 class="card-title mb-1">${grupo.nombre}</h6>
+        <p class="small text-muted mb-0">${cantidad} ejercicio${cantidad === 1 ? "" : "s"}</p>
+      </a>
+    </div>`;
+  }).join("");
+}
 
 function badgeDificultad(dificultad) {
   const clases = {

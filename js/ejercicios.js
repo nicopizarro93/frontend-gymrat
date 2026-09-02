@@ -16,6 +16,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let grupoActivo = "";
 
+  // Preseleccion de grupo via query string (?grupo=PECHO), usada por los
+  // accesos directos de "Explora por grupo muscular" en la home. Si el
+  // valor no calza con ningun chip valido, se ignora y queda "Todos".
+  const grupoQuery = (new URLSearchParams(window.location.search).get("grupo") || "").toUpperCase();
+  if (grupoQuery) {
+    const chipQuery = filtrosGrupoEl.querySelector('.gr-filter-chip[data-grupo="' + grupoQuery + '"]');
+    if (chipQuery) {
+      filtrosGrupoEl.querySelectorAll(".gr-filter-chip").forEach((c) => c.classList.remove("active"));
+      chipQuery.classList.add("active");
+      grupoActivo = grupoQuery;
+    }
+  }
+
   const btnLimpiarFiltrosEl = document.getElementById("btnLimpiarFiltros");
   const btnLimpiarFiltrosVacioEl = document.getElementById("btnLimpiarFiltrosVacio");
 
